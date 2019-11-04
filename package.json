@@ -21,5 +21,14 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doc1atis/Booksy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/doc1atis/Booksy/issues"
+  },
+  "homepage": "https://github.com/doc1atis/Booksy#readme"
 }
