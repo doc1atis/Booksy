@@ -1,4 +1,4 @@
-<div id="appBody" class="container-fluid" style="background-color: #f0cbbd;padding: 0;">
+<div id="appBody" class="container-fluid" style="background-color:darksalmon;padding: 0;">
     <div class="card text-center rounded-0">
         <div class="card-header">
             Read with <i class="fab fa-blogger-b"></i>ooksy
@@ -6,80 +6,106 @@
         <div class="card-body">
             <h5 class="card-title">Sell Your Digital Book</h5>
             <p class="card-text">We are only accepting books in PDF format at this time.</p>
-            <a href="#" class="btn btn-primary">Upload Your Book</a>
+            <a href="#" class="btn btn-primary">
+                Upload Your Book <i class="fas fa-cloud-upload-alt"></i>
+
+            </a>
         </div>
         <div class="card-footer text-muted">
             <i class="fab fa-blogger-b"></i>ridge the Gap
         </div>
     </div>
 
+
+
     <!-- book cards row start -->
-    <div class="row justify-content-around">
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
-                class="card-img-top" alt="book">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row">
+        <div class="container pl-5 pr-5 pb-4 col-sm-12 flex-wrap d-flex justify-content-between">
+            <%for(let i=0;i<10;i++){%>
+            <div class="card mt-5 ml-2 mr-2" style="width: 18rem;">
+                <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
+                    class="card-img-top" alt="book">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Price: <span class="text-success"><i class="fas fa-comment-dollar"></i>30</span>
+                    </h5>
+                    <!-- <a href="#" class="btn btn-primary d-block">
+                        <i class="fas fa-arrow-alt-circle-down"></i>
+
+                    </a> -->
+                    <div class="mt-2 d-flex justify-content-between">
+                        <button type="button" data-target="#exampleModal" data-toggle="modal"
+                            class="btn btn-info d-inline">
+                            Preview <i class="fab fa-earlybirds"></i>
+
+                        </button>
+                        <a href="#" class="btn btn-dark d-inline">
+
+                            <i class="fas fa-comment-dollar"></i> Buy
+                        </a>
+                    </div>
+
+                </div>
             </div>
+
+            <% }%>
         </div>
-        <!-- car 2 -->
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
-                class="card-img-top" alt="book">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <!-- book cards row end -->
+
+    <!-- pagination start -->
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- pagination end -->
+
+</div>
+
+
+<!-- start modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Book Preview<i class="fab fa-earlybirds text-success"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
-        <!-- card 3 -->
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
-                class="card-img-top" alt="book">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, sit molestias? Autem eum
+                    perferendis illo unde, nisi excepturi sint, odit consequuntur facere rem doloremque error ullam nam
+                    corporis, necessitatibus alias.
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta suscipit, eaque, unde maxime minima
+                    tenetur quibusdam, fuga exercitationem quis optio quae magnam nostrum debitis. Repellat, alias ex?
+                    Perferendis, cumque nesciunt.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi earum exercitationem quos inventore,
+                    repellat eaque. Velit dignissimos odio tempore, nihil earum delectus eos placeat ipsa vel cum soluta
+                    fuga quasi?
+                </p>
             </div>
-        </div>
-        <!-- card 4 -->
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
-                class="card-img-top" alt="book">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <!-- card 5 -->
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="https://www.eastonpress.com/secure/Content/ImagesProducts/f451a52b-9cc0-4d63-ba25-39a4bc8ddd3d_500_0.jpg"
-                class="card-img-top" alt="book">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-
-    <!-- book cards row end -->
 </div>
+<!-- ennnnnnd modal  -->

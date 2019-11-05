@@ -6,4 +6,4 @@ startUp(app)
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   portDebugger("app is listening on port ", port);
-});
+}); 
