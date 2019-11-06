@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.2.4",
     "connect-flash": "^0.1.1",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
