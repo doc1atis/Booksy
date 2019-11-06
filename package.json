@@ -1,13 +1,13 @@
 {
-  "name": "Bookstore App",
+  "name": "bookstore",
   "version": "1.0.0",
-  "description": "",
+  "description": "a nice bookstore",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "olgy jeangilles",
   "license": "ISC",
   "dependencies": {
     "connect-flash": "^0.1.1",
