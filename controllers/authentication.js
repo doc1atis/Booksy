@@ -30,9 +30,9 @@ module.exports = {
     runPassport: (app) => {
         app.use(
             expressSession({
-                secret: "olgy is the best",
-                resave: false,
-                saveUninitialized: false
+                secret: process.env.SESSION_SECRET,
+                resave: true,
+                saveUninitialized: true
             })
         );
         app.use(flash());

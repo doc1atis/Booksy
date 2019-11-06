@@ -8,7 +8,6 @@ module.exports = async function () {
             useCreateIndex: true
         });
         dbDebugger("app is connected to MONGO DB OLGY")
-        console.log(process.env.MONGODB_URI);
     } catch (error) {
         dbDebugger("there was an error connecting to MONGO DB OLGY: ", error);
     }
