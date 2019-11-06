@@ -14,11 +14,9 @@ module.exports = function (app) {
     app.use(express.json());
     // get flash messages here
     app.use(function (req, res, next) {
-        res.locals.message = req.flash('message')
         res.locals.user = req.user
-
-
-        // res.locals.username = req.user.username
+        res.locals.errorMessage = req.flash("errorMessage")
+        res.locals.successMessage = req.flash("successMessage")
         next()
     })
 }
