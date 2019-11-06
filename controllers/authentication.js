@@ -1,8 +1,14 @@
 const passport = require("passport");
+const mongoose = require("mongoose")
 const expressSession = require("express-session")
+const MongoDbStore = require("connect-mongo")(expressSession)
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 const User = require("../models/UserModel")
+const store = new MongoDbStore({
+    mongooseConnection: mongoose.connection,
+    autoReconnect: true,
+})
 const loginConfig = {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -31,8 +37,9 @@ module.exports = {
         app.use(
             expressSession({
                 secret: process.env.SESSION_SECRET,
-                resave: true,
-                saveUninitialized: true
+                resave: false,
+                saveUninitialized: false,
+                store
             })
         );
         app.use(flash());
