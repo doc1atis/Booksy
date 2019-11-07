@@ -39,7 +39,11 @@ module.exports = {
                 secret: process.env.SESSION_SECRET,
                 resave: false,
                 saveUninitialized: false,
-                store
+                store,
+                cookie: {
+                    secure: false,
+                    maxAge: 365 * 24 * 60 * 60 * 1000
+                }
             })
         );
         app.use(flash());
