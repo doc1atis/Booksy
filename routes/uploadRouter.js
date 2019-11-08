@@ -3,7 +3,7 @@ const fs = require("fs")
 const Book = require("../models/BookModel")
 const auth = require("../controllers/authentication")
 const router = express.Router()
-router.get("/", (req, res) => {
+router.get("/", auth.isLoggedIn, (req, res) => {
     res.render("uploadForm")
 })
 
