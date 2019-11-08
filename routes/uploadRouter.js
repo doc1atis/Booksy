@@ -1,12 +1,13 @@
 const express = require("express")
 const fs = require("fs")
 const Book = require("../models/BookModel")
+const auth = require("../controllers/authentication")
 const router = express.Router()
 router.get("/", (req, res) => {
     res.render("uploadForm")
 })
 
-router.post("/", async (req, res) => {
+router.post("/", auth.isLoggedIn, async (req, res) => {
     // validate with joi here first
     let paths = []
     if (req.files.bookCover) {
