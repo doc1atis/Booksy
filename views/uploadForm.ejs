@@ -1,7 +1,22 @@
 <%include ./partials/head%>
 <%include ./partials/navBar%>
 
-<div class="container">
+<div id="appBody" class="container">
+    <%if(successMessage.length){%>
+    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+        <strong>Great!</strong> <%=successMessage%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%}else if(errorMessage.length){%>
+    <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+        <strong>Sorry!</strong> <%=errorMessage%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <% }%>
     <form method="POST" action="/upload" enctype="multipart/form-data">
         <div class="row mt-3">
             <div class="col">
@@ -31,6 +46,17 @@
                     Book content
                 </label>
             </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            </div>
+            <select name="category" class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="scify">scify</option>
+                <option value="romance">romance</option>
+                <option value="comedy">comedy</option>
+            </select>
         </div>
         <div class="input-group mt-2">
             <div class="input-group-prepend">
