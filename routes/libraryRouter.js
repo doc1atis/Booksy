@@ -1,6 +1,7 @@
 const express = require("express")
+const auth = require("../controllers/authentication")
 const router = express.Router()
-router.get('/', (req, res) => {
+router.get('/', auth.isLoggedIn, (req, res) => {
     res.send("I will render your library")
 })
 router.get('/download/:id', (req, res) => {

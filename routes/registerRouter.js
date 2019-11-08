@@ -1,7 +1,11 @@
 const express = require("express");
 const auth = require("../controllers/authentication");
 const router = express.Router();
-router.get("/", (req, res) => {
+function isLoggedOut(req, res, next) {
+    if (!req.isAuthenticated()) return next();
+    res.redirect("back");
+}
+router.get("/", isLoggedOut, (req, res) => {
     // show register form
     res.render("register");
 });
