@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CARDBOOK</title>
+    <script
+      src="https://kit.fontawesome.com/bfa195b1fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/card.css" />
+  </head>
+  <body>
+    <!-- card start here -->
+    <div class="card">
+      <div class="card__side card__side--front">
+        <!-- ADD PICTURE ON THE CARD IN CSS using set attribute bacKground -->
+        <div class="card__picture">&nbsp;</div>
+        <h5 class="card__heading">
+          <!-- book title -->
+          <span class="card__heading-span">drew the best</span>
+        </h5>
+        <div class="card__details">
+          <ul>
+            <li class="item">summarry</li>
+            <li class="item">reviews</li>
+            <li class="item">author</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card__side card__side--back">
+        <div class="card__cta">
+          <div class="card__price-box">
+            <p class="card__price-only">price</p>
+            <p class="card__price-value">
+              <i class="fas fa-comment-dollar"></i>348
+            </p>
+          </div>
+          <a href="#" class="btn btn--white">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- car ends here -->
+  </body>
+</html>

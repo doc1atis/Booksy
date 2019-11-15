@@ -1,0 +1,12 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    /* all element will inherit box-sizing from their parent box-sizing */
+    box-sizing: inherit;
+}
+html{
+    /* this is the rem, 62.5% of 16px by browser = 10px*/
+    font-size: 62.5%;
+}

@@ -1,41 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Booksy Book For Life</title>
-    <script src="https://kit.fontawesome.com/bfa195b1fd.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/bfa195b1fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./icons/icon-font.css" />
+    <!-- <link rel="stylesheet" href="./styles/home.css" /> -->
+    <link rel="stylesheet" href="../styles/home.css" />
+  </head>
+  <!-- Box__Element--Modifier -->
 
-    <link rel="stylesheet" href="../styles/home.css">
-</head>
+  <body>
+    <!-- navigation -->
+    <div class="navigation">
+      <input class="navigation__checkbox" type="checkbox" id="navi-toggle" />
+      <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
+      <div class="navigation__background">&nbsp;</div>
+      <nav class="navigation__nav">
+        <ul class="navigation__list">
+          <%if(!user){%>
+          <li class="navigation__item">
+            <a href="/register" class="navigation__link">signUp</a>
+          </li>
 
-<body>
+          <li class="navigation__item">
+            <a href="/login" class="navigation__link">Login</a>
+          </li>
+          <%}%> <%if(user){%>
+          <li class="navigation__item">
+            <a href="/logout" class="navigation__link">logout</a>
+          </li>
+          <%}%>
+          <li class="navigation__item">
+            <a href="/contact" class="navigation__link">contact Us</a>
+          </li>
+          <li class="navigation__item">
+            <a href="/upload" class="navigation__link">Upload Books</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <!-- the big green header -->
     <header class="header">
-        <div class="logo-box">
-            <i class="fab fa-blogger-b logo"></i>
-        </div>
-        <div class="text-box">
-            <h1 class="heading-primary">
-                <span class="heading-primary-main">
-                    obooksy
-
-                </span>
-                <span class="heading-primary-sub">
-                    read to get bright
-                </span>
-            </h1>
-            <a href="#" class="btn btn-white btn-animated">Our Books</a>
-        </div>
-
-
-
+      <div class="header__logo-box">
+        <i class="fab fa-blogger-b header__logo"></i>
+      </div>
+      <div class="header__text-box">
+        <h1 class="heading-primary">
+          <span class="heading-primary--main">
+            obooksy
+          </span>
+          <span class="heading-primary--sub">
+            read to get bright
+          </span>
+        </h1>
+        <a href="/allbooks" class="btn btn--white btn--animated">Our Books</a>
+      </div>
     </header>
 
+    <main>
+      <section class="section-about">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">
+            Great Books For great minds
+          </h2>
+        </div>
 
-</body>
+        <div class="row">
+          <div class="col-1-of-2">
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Make Reading Great Again
+            </h3>
+            <p class="paragraph">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam
+              consequatur illo similique, quidem nihil rem ex, iusto
+              perspiciatis omnis architecto incidunt exercitationem, accusamus
+              assumenda aliquam dolor laudantium sequi? Commodi, expedita.
+            </p>
 
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Booksy leader of the digital age
+            </h3>
+            <p class="paragraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+              totam ab itaque aliquid nobis repellendus, facilis similique,
+              omnis dolor rerum animi, quas placeat. Libero reprehenderit
+              perferendis cumque rem eum molestiae.
+            </p>
+            <a href="#" class="btn-text">Learn more &rarr;</a>
+          </div>
+          <div class="col-1-of-2">
+            <div class="composition">
+              <img
+                src="./images/headBackground.jpg"
+                alt="photo1"
+                class="composition-photo composition-photo-p1"
+              />
+              <img
+                src="./images/blactTab.jpg"
+                alt="photo2"
+                class="composition-photo composition-photo-p2"
+              />
+              <img
+                src="./images/herb.jpg"
+                alt="photo3"
+                class="composition-photo composition-photo-p3"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-features">
+        <div class="row">
+          <div class="col-1-of-4">
+            <div class="feature-box">
+              <i class="feature-box__icon icon-ic-layout-left-menu"></i>
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                explore the world
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                amet quod nisi pariatur minus aspernatur adipisci optio ad
+                voluptates rerum.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-1-of-4">
+            <div class="feature-box">
+              <i class="feature-box__icon icon-ic-media-collection"></i>
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                audio book
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                amet quod nisi pariatur minus aspernatur adipisci optio ad
+                voluptates rerum.
+              </p>
+            </div>
+          </div>
+          <div class="col-1-of-4">
+            <div class="feature-box">
+              <i class="feature-box__icon icon-ic-security-fingerprint"></i>
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                security
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                amet quod nisi pariatur minus aspernatur adipisci optio ad
+                voluptates rerum.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-1-of-4">
+            <div class="feature-box">
+              <i class="feature-box__icon icon-ic-statistics-workflow"></i>
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                innovation
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                amet quod nisi pariatur minus aspernatur adipisci optio ad
+                voluptates rerum.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-books">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">
+            Best sellers
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-1-of-3">
+            <div class="card">
+              <div class="card__side card__side--front">
+                <div class="card__picture card__picture--1">&nbsp;</div>
+                <h4 class="card__heading">
+                  <span class="card__heading-span card__heading-span--1">
+                    The sea explorer
+                  </span>
+                </h4>
+                <div class="card__details">
+                  <ul>
+                    <li>3 days tours</li>
+                    <li>up to 30 people</li>
+                    <li>2 tour guides</li>
+                    <li>sleep in cozy hotel</li>
+                    <li>difficulty:easy</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card__side card__side--back card__side--back-1">
+                <div class="card__cta">
+                  <div class="card__price-box">
+                    <p class="card__price-only">price</p>
+                    <p class="card__price-value">$250</p>
+                  </div>
+                  <a href="#" class="btn btn--white">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-1-of-3">col 1 of 3</div>
+          <div class="col-1-of-3">col 1 of 3</div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

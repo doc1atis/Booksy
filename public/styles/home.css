@@ -1,180 +1,639 @@
 /* RESET BROWSER DEFAULT */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    /* font from google font */
-    font-family: "Lato",sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #777;
-    padding: 30px;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* all element will inherit box-sizing from their parent box-sizing */
+  box-sizing: inherit;
 }
 
+html {
+  /* this is the rem, 62.5% of 16px by browser = 10px*/
+  font-size: 62.5%;
+}
 
-.header{
-    /* 95% of the screen */
-    height: 95vh;
-    /* ADD A BACKGROUND IMAGE and gradient */
-    background-image: linear-gradient(to right bottom,rgba(110, 107, 117, 0.94),#28b485d6),url("../images/headBackground.jpg");
-    /* cover the entire background with the image */
-    background-size: cover;
-    /* make sure the top of the image always touch the to of the screen even when the screen is small */
-    background-position: top;
-    clip-path: polygon(0 0,100% 0,100% 75vh,0 100%);
-    position: relative;
-}
-.logo-box{
-    color: #fff;
-    font-size: 3rem;
-    /* parent position must be relative */
-    position: absolute;
-    top: 10px;
-    left: 30px;
-}
-.text-box{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-}
-.heading-primary{
-
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    backface-visibility: hidden;
-    margin-bottom: 60px;
-
-}
-.heading-primary-main{
-    display: block;
-    font-size: 50px;
-    font-weight: 400;
-    letter-spacing: 35px;
-    animation-name: moveInRight;
-    animation-duration: 2s;
-    /* wait 1 sec before the animation start */
-    animation-delay: 0.5s;
-    /* how many time the animation should happen */
-    /* animation-iteration-count: 3; */
-    /* started fast and become slow */
-    /* animation-timing-function: ease-in; */
-}
-.heading-primary-sub{
-    display: block;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 13px;
-    animation: moveInLeft 4s ease-in-out;
-}
 /* create animation name */
-@keyframes moveInLeft{
-    0%{
-        opacity: 0;
-        /* move to the right */
-        transform: translateX(-100px);
-    }
-    60%{
-        transform: rotate(120deg);
-    }
-    70%{
-        transform: rotate(-120deg);
-    }
-    80%{
-        transform: translateX(10px);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* move to the right */
+    transform: translateX(-1rem);
+  }
+  /* 60% {
+    transform: rotate(120deg);
+  }
+  70% {
+    transform: rotate(-120deg);
+  } */
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
-@keyframes moveInRight{
-    0%{
-        opacity: 0;
-        /* move to the right */
-        transform: translateX(100px);
-    }
-    80%{
-        transform: translateX(-10px);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* move to the right */
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
-
-@keyframes moveInBottom{
-    0%{
-        opacity: 0;
-        
-        transform: translateY(30px);
-    }
-    80%{
-        transform: translateY(-10px);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  80% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
+
+body {
+  /* font from google font */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 151, 138, 0.406),
+    #64978a
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s;
+}
+.heading-secondary:hover {
+  transform: skewY(2deg) skewX(12deg);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.331);
+}
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+}
+.paragraph:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.u-center-text {
+  text-align: center;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+
 /* sudo class: a state of an element */
 .btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block;
-    border-radius: 100px;
-    /* it means, animate all properties */
-    transition: all 0.2s;
-    position: relative;
+.btn:visited {
+  text-transform: uppercase;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  /* it means, animate all properties */
+  transition: all 0.2s;
+  position: relative;
+}
 
+.btn:hover {
+  /* make button move up on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
 
+.btn:active {
+  transform: translateY(-1px);
 }
-.btn:hover{
-    /* make button move up on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
 }
-.btn:active{
-    transform: translateY(-1px);
-}
-.btn-white{
-    background-color: #fff;
-    color: #777;
-}
+
 /* create a copy of the element behind it */
-.btn::after{
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.5s;
-}
-.btn-white::after{
-    background-color: #fff;
-}
-.btn:hover::after{
-    /* increase size and fade out */
-    transform: scale(1.5);
-    opacity: 0;
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.8s;
 }
 
-.btn-animated{
-    animation: moveInBottom 1s ease-out 3.5s;
-    /* apply the 0% animation before the animation begin */
-    animation-fill-mode:backwards;
-    
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  /* increase size and fade out */
+  transform: scale(1.5);
+  opacity: 0;
+}
+
+.btn--animated {
+  animation: moveInBottom 0.8s ease-out 0.2s;
+  /* apply the 0% animation before the animation begin */
+  animation-fill-mode: backwards;
+}
+
+.btn-text:link,
+.btn-text:visited {
+  font-size: 1.6rem;
+  color: #64978a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 0.1rem solid #64978a;
+  padding: 0.3rem;
+  transition: all 0.2s;
+}
+
+.btn-text:hover {
+  background-color: rgba(95, 158, 160, 0.783);
+  color: white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.31);
+  transform: translateY(-2px);
+}
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.31);
+  transform: translateY(0);
+}
+
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 53rem;
+}
+.card__side {
+  font-size: 2rem;
+  height: 53rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.29);
+}
+.card__side--front {
+  background-color: white;
+}
+.card__side--back {
+  transform: rotateY(180deg);
+}
+.card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+.card:hover .card__side--front {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__side--back {
+  transform: rotateY(0);
+}
+.card__picture {
+  background-size: cover;
+  height: 23rem;
+  background-blend-mode: overlay;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.card__picture--1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730),
+    url("../images/creative.jpg");
+}
+.card__picture--2 {
+  background-image: url("../images/brownBook.jpg");
+}
+.card__picture--3 {
+  background-image: url("../images/brownBook.jpg");
+}
+.card__heading {
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: right;
+  color: white;
+  position: absolute;
+  top: 12rem;
+  right: 2rem;
+  width: 75%;
+}
+.card__heading-span {
+  padding: 1rem 1.15rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.card__heading-span--1 {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(255, 185, 0, 0.85),
+    rgba(255, 119, 48, 0.85)
+  );
+}
+.card__details {
+  padding: 3rem;
+}
+.card__details ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+.card__details ul li {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.card__details ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+.card__price-box {
+  text-align: center;
+  margin-bottom: 8rem;
+  color: white;
+}
+.card__price-only {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.card__price-value {
+  font-size: 6rem;
+  font-weight: 100;
+}
+
+.composition {
+  position: relative;
+}
+.composition-photo {
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.509);
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  transition: all 0.2s;
+  outline-offset: 2rem;
+}
+.composition-photo-p1 {
+  left: 0;
+  top: -2rem;
+}
+.composition-photo-p2 {
+  right: 0;
+  top: 2rem;
+}
+.composition-photo-p3 {
+  left: 20%;
+  top: 10rem;
+}
+.composition-photo:hover {
+  outline: 1.5rem solid rgba(172, 255, 47, 0.879);
+  transform: scale(1.05) translateY(-0.5rem);
+  box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.571);
+  z-index: 20;
+}
+.composition:hover .composition-photo:not(:hover) {
+  transform: scale(0.96);
+}
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.482);
+  transition: transform 0.3s;
+}
+.feature-box__icon {
+  font-size: 6rem;
+  margin-bottom: 0.5rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 151, 138, 0.406),
+    #64978a
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.feature-box:hover {
+  transform: translateY(-1.5rem) scale(1.03);
+}
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row [class^="col-"] {
+  float: left;
+}
+.row [class^="col-"]:not(:last-child) {
+  margin-right: 6rem;
+}
+.row .col-1-of-2 {
+  width: calc((100% - 6rem) / 2);
+}
+.row .col-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3);
+}
+.row .col-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4);
+}
+
+.header {
+  /* 95% of the screen */
+  height: 95vh;
+  /* ADD A BACKGROUND IMAGE and gradient */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(110, 107, 117, 0.94),
+      #28b485d6
+    ),
+    url("../images/headBackground.jpg");
+  /* cover the entire background with the image */
+  background-size: cover;
+  /* make sure the top of the image always touch the to of the screen even when the screen is small */
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.header__logo-box {
+  color: #fff;
+  font-size: 8rem;
+  /* parent position must be relative */
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInRight;
+  animation-duration: 2s;
+  /* wait 1 sec before the animation start */
+  /* animation-delay: 0.5s; */
+  /* how many time the animation should happen */
+  /* animation-iteration-count: 3; */
+  /* started fast and become slow */
+  /* animation-timing-function: ease-in; */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1.3rem;
+  animation: moveInLeft 1s ease-in-out;
+}
+
+.navigation__checkbox {
+  display: none;
+}
+
+.navigation__button {
+  background-color: white;
+  height: 7rem;
+  width: 7rem;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.536);
+  text-align: center;
+  cursor: pointer;
+}
+
+.navigation__background {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.navigation__nav {
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1500;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navigation__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%;
+}
+
+.navigation__item {
+  margin: 1rem;
+}
+
+.navigation__link:link,
+.navigation__link:visited {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: white;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 50%,
+    white 50%
+  );
+  background-size: 250%;
+  transition: all 0.8s;
+}
+
+.navigation__link:hover,
+.navigation__link:active {
+  background-position: 100%;
+  color: #28b485;
+  transform: translateX(1rem);
+}
+
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(100);
+}
+
+.navigation__checkbox:checked ~ .navigation__nav {
+  opacity: 1;
+  width: 100%;
+}
+
+.navigation__icon {
+  position: relative;
+  margin-top: 3.5rem;
+}
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after {
+  width: 3rem;
+  height: 2px;
+  background-color: #333;
+  display: inline-block;
+}
+.navigation__icon::before,
+.navigation__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+.navigation__icon::before {
+  top: -1rem;
+}
+.navigation__icon::after {
+  top: 1rem;
+}
+
+.navigation__button:hover .navigation__icon::before {
+  top: -1.3rem;
+}
+
+.navigation__button:hover .navigation__icon::after {
+  top: 1.3rem;
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url("../images/brownBook.jpg");
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem;
+}
+.section-features > * {
+  transform: skewY(7deg);
+}
+
+.section-books {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem;
 }

@@ -1,0 +1,56 @@
+.header {
+  /* 95% of the screen */
+  height: 95vh;
+  /* ADD A BACKGROUND IMAGE and gradient */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(110, 107, 117, 0.94),
+      #28b485d6
+    ),
+    url("../images/headBackground.jpg");
+  /* cover the entire background with the image */
+  background-size: cover;
+  /* make sure the top of the image always touch the to of the screen even when the screen is small */
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.header__logo-box {
+  color: #fff;
+  font-size: 8rem;
+  /* parent position must be relative */
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInRight;
+  animation-duration: 2s;
+  /* wait 1 sec before the animation start */
+  /* animation-delay: 0.5s; */
+  /* how many time the animation should happen */
+  /* animation-iteration-count: 3; */
+  /* started fast and become slow */
+  /* animation-timing-function: ease-in; */
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1.3rem;
+  animation: moveInLeft 4s ease-in-out;
+}

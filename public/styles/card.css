@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  margin: 2rem auto;
+  width: 25rem;
+  height: 28rem;
+  position: relative;
+}
+.card__side {
+  background-color: orangered;
+  height: 28rem;
+  width: 100%;
+  transition: all 1s ease;
+  backface-visibility: hidden;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1.3rem 3rem rgba(0, 0, 0, 0.228);
+}
+.card__side--front {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(255, 99, 71, 0.29),
+    rgba(71, 255, 154, 0.605)
+  );
+}
+.card__side--back {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+  transform: rotateY(180deg);
+}
+.card:hover .card__side--front {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__side--back {
+  transform: rotateY(0);
+}
+.card__picture {
+  background-size: cover;
+  height: 14rem;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  border-radius: 3px;
+}
+.card__heading {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: white;
+  position: absolute;
+  top: 9rem;
+  right: 3rem;
+  text-align: right;
+  width: 60%;
+}
+.card__heading-span {
+  padding: 1.5rem 1.5rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(255, 166, 0, 0.42),
+    rgba(255, 166, 0, 0.358)
+  );
+}
+.card__details {
+  padding: 3rem;
+}
+.card__details ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+.card__details ul li {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.666);
+}
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+.card__price-box {
+  text-align: center;
+  margin-bottom: 5rem;
+  color: whitesmoke;
+}
+.card__price-only {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.card__price-value {
+  font-size: 6rem;
+  font-weight: 100;
+}
+.summary-button {
+  font-size: 1.5rem;
+}
+.summary-text {
+  background-color: lawngreen;
+  width: 100%;
+}
+.btns:link,
+.btns:visited {
+  text-transform: uppercase;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  /* it means, animate all properties */
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btns:hover {
+  /* make button move up on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btns:active {
+  transform: translateY(-1px);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* create a copy of the element behind it */
+.btns::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btns:hover::after {
+  /* increase size and fade out */
+  transform: scale(1.5);
+  opacity: 0;
+}

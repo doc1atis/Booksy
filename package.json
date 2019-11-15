@@ -4,12 +4,15 @@
   "description": "a nice bookstore",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "compile:sass": "node-sass public/sass/bookCard.scss public/styles/card.css -w"
   },
   "keywords": [],
   "author": "olgy jeangilles",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.1.2",
     "debug": "^4.1.1",
@@ -27,9 +30,12 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "stripe": "^7.13.0",
     "uuid": "^3.3.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/doc1atis/Booksy.git"

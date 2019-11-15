@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>checkout</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <style>
+      .form-group {
+        width: 25rem;
+        background-color: thistle;
+        border-radius: 4px;
+        padding: 10px;
+        box-shadow: 0 1px 1rem 0.5rem #e6ebf1;
+      }
+      .payment-button {
+        justify-self: center;
+        align-self: center;
+        height: 2rem;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+      .payment-button:hover {
+        background-color: tomato;
+        cursor: pointer;
+        transform: translateY(-3px);
+        box-shadow: 0 1px 0.5rem 0.3rem #182432;
+      }
+      .bottom-grid {
+        display: grid;
+        height: 5rem;
+        grid-template-columns: 1fr;
+      }
+      .StripeElement {
+        box-sizing: border-box;
+
+        height: 40px;
+
+        padding: 10px 12px;
+
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: white;
+
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+      }
+
+      .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+      }
+
+      .StripeElement--invalid {
+        border-color: #fa755a;
+      }
+
+      .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+      }
+    </style>
+    <form class="form-group" action="/buy" method="post" id="payment-form">
+      <div class="form-row">
+        <label for="card-element">
+          Credit or debit card
+        </label>
+        <div id="card-element">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
+      </div>
+      <div class="bottom-grid">
+        <button class="payment-button" type="submit">Submit Payment</button>
+      </div>
+    </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="../script/stripePayment.js"></script>
+    <script>
+      /*
+      const stripe = Stripe("pk_test_WtKftRIzpOlpR1A3l3BjJsxs000vXfOC0G");
+      stripe
+        .redirectToCheckout({
+          sessionId: "<%=sessionId%>"
+        })
+        .then(function(result) {
+          if (result.error) {
+            return console.log(result.error.message);
+          }
+          console.log("olgy checkout was successful");
+        });
+        */
+    </script>
+  </body>
+</html>
