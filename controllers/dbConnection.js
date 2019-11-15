@@ -7,8 +7,10 @@ module.exports = async function() {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
+    console.log("app is connected to MONGO DB OLGY");
     dbDebugger("app is connected to MONGO DB OLGY");
   } catch (error) {
+    console.log("there was an error connecting to MONGO DB OLGY: ", error);
     dbDebugger("there was an error connecting to MONGO DB OLGY: ", error);
   }
 };
