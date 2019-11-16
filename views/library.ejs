@@ -1,4 +1,56 @@
-<%include ./partials/head%> <%include ./partials/navBar%>
-<h1><%=chargeMessage%></h1>
-
-<%include ./partials/feet%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Library</title>
+    <script
+      src="https://kit.fontawesome.com/bfa195b1fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../styles/card.css" />
+    <link rel="stylesheet" href="../styles/allBooks.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../icons/icon-font.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="/" class="header-logo"><i class="fab fa-blogger-b"></i></a>
+      <h3 class="book-word">purchases</h3>
+      <!-- right side starts here -->
+      <div class="right-side-top">
+        <%if(user){%>
+        <!-- user icon and username -->
+        <div class="user-icon-and-username">
+          <span class="user-icon">
+            <i class="icon-ic-actions-user"></i>
+          </span>
+          <span class="user-name-word"><%=user.username%></span>
+        </div>
+        <!-- user icon and username -->
+        <a href="/library" class="library-icon">
+          <i class="icon-ic-devices-tablet"></i>
+        </a>
+        <a href="/logout" class="user-name-word logout-word">logout</a>
+        <%}else{%>
+        <!-- user icon and username -->
+        <div class="user-icon-and-username">
+          <span class="user-icon">
+            <i class="icon-ic-actions-closed-user"></i>
+          </span>
+          <a href="/login" class="user-name-word login-word">login</a>
+        </div>
+        <!-- user icon and username -->
+        <a href="/register" class="user-name-word logout-word">signup</a>
+        <%}%>
+      </div>
+      <!-- right side ends here -->
+    </div>
+    <!-- belly -->
+    <div class="belly"></div>
+  </body>
+</html>

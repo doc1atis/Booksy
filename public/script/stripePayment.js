@@ -14,7 +14,6 @@ for (let button of document.getElementsByClassName("buyButtonLink")) {
       })
       .then(function(response) {
         console.log(response.data.sessionId);
-
         stripe
           .redirectToCheckout({
             sessionId: response.data.sessionId

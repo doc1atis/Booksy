@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+.full-body {
+  display: flex;
+  flex-direction: column;
+}
+.top {
+  background-color: green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top-ul {
+  background-color: red;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+.top-ul-item {
+  font-size: 3rem;
+  background-color: lavender;
+  list-style: none;
+  border-radius: 14px;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+.belly {
+  background-color: hotpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 10rem;
+}
+.book {
+  background-color: salmon;
+  height: 16rem;
+  margin: 2rem;
+  border-radius: 4px;
+}
+.book-icon {
+  font-size: 14rem;
+}
+.library-icon {
+  font-size: 4rem;
+  align-self: center;
+}

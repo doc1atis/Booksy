@@ -1,12 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const auth = require("../controllers/authentication");
 const { Book } = require("../models/BookModel");
 const router = express.Router();
 const endpointSecret = process.env.END_POINT_SECRET;
 let olgyPass = {};
 // post /buy
-router.post("/", express.json(), async (req, res) => {
+router.post("/", auth.isLoggedIn, express.json(), async (req, res) => {
   // look for the book in data base, by using req.body.bookID
   const book = await Book.findById(req.body.bookID);
   olgyPass.book = book;

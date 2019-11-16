@@ -5,16 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>allBooks</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
-      rel="stylesheet"
-    />
+
     <script
       src="https://kit.fontawesome.com/bfa195b1fd.js"
       crossorigin="anonymous"
@@ -22,146 +13,93 @@
     <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="../styles/allBooks.css" />
     <link rel="stylesheet" href="../styles/card.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../icons/icon-font.css" />
   </head>
   <body>
-    <div class="the-header">
-      <!-- row1 -->
-      <div class="book-word-container">
-        <h1 class="books">Books</h1>
-      </div>
-      <!-- row2 -->
-      <div class="logo-container">
-        <a class="logo" href="/">
-          <i class="fab fa-blogger-b"></i>
+    <div class="header">
+      <a href="/" class="header-logo"><i class="fab fa-blogger-b"></i></a>
+      <h3 class="book-word">Books</h3>
+      <!-- right side starts here -->
+      <div class="right-side-top">
+        <%if(user){%>
+        <!-- user icon and username -->
+        <div class="user-icon-and-username">
+          <span class="user-icon">
+            <i class="icon-ic-actions-user"></i>
+          </span>
+          <span class="user-name-word"><%=user.username%></span>
+        </div>
+        <!-- user icon and username -->
+        <a href="/library" class="library-icon">
+          <i class="icon-ic-devices-tablet"></i>
         </a>
-        <span class="menu"
-          ><i class="fas fa-bars menu-bars"></i>
-          <span class="cat-word">categories</span>
-        </span>
+        <a href="/logout" class="user-name-word logout-word">logout</a>
+        <%}else{%>
+        <!-- user icon and username -->
+        <div class="user-icon-and-username">
+          <span class="user-icon">
+            <i class="icon-ic-actions-closed-user"></i>
+          </span>
+          <a href="/login" class="user-name-word login-word">login</a>
+        </div>
+        <!-- user icon and username -->
+        <a href="/register" class="user-name-word logout-word">signup</a>
+        <%}%>
       </div>
+      <!-- right side ends here -->
     </div>
-    <div class="the-belly">
-      <!-- row3 -->
-      <div class="container-mid">
-        <div class="my-books-grid-container">
-          <%books.forEach((book,i)=>{%>
-          <!-- card starts here -->
-          <div class="card book-card">
-            <div class="card__side card__side--front">
-              <!-- ADD PICTURE ON THE CARD IN CSS using set attribute bacKground -->
-              <div
-                id="bookPicture<%=i%>"
-                class="card__picture"
-                style="background-image: url('../<%=book.cover%>');"
-              >
-                &nbsp;
-              </div>
-              <h5 class="card__heading">
-                <!-- book title -->
-                <span class="card__heading-span"><%=book.title%></span>
-              </h5>
-              <div class="card__details">
-                <ul>
-                  <li class="item">
-                    <span class="star-review">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </span>
-                    reviews
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="card__side card__side--back">
-              <div class="card__cta">
-                <div class="card__price-box">
-                  <p class="card__price-only">price</p>
-                  <p class="card__price-value">
-                    <i class="fas fa-comment-dollar"></i><%=book.price%>
-                  </p>
-                </div>
-                <button
-                  style="margin-bottom: 1rem;"
-                  class="btn btn-info summary-button"
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#modalID<%=i%>"
-                >
-                  summary
-                </button>
-
-                <a
-                  style="margin-bottom: 1rem;"
-                  href="<%=book._id%>"
-                  class="buyButtonLink btns btn--white"
-                >
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- card ends here -->
-          <!--modal starts here-->
+    <!-- belly -->
+    <div class="belly">
+      <%books.forEach(book => {%>
+      <!-- card start here -->
+      <div class="card">
+        <div class="card__side card__side--front">
+          <!-- ADD PICTURE ON THE CARD IN CSS using set attribute bacKground -->
           <div
-            class="modal fade"
-            id="modalID<%=i%>"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
+            class="card__picture"
+            style="background-image: url('../<%=book.cover%>');"
           >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    <%=book.title%>
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p class="summary-text">
-                    <%=book.bookSummary%>
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <a href="/buy/?item=<%=book._id%>" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </div>
+            &nbsp;
           </div>
-          <!--modal ends here-->
-          <%})%>
+          <h5 class="card__heading">
+            <!-- book title -->
+            <span class="card__heading-span">drew the best</span>
+          </h5>
+          <div class="card__details">
+            <ul>
+              <li class="item">summarry</li>
+              <li class="item">reviews</li>
+              <li class="item">author</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card__side card__side--back">
+          <div class="card__cta">
+            <div class="card__price-box">
+              <p class="card__price-only">price</p>
+              <p class="card__price-value">
+                <i class="fas fa-comment-dollar"></i><%=book.price%>
+              </p>
+            </div>
+            <%if(user){%>
+            <a href="<%=book._id%>" class="btns buyButtonLink btn--white"
+              >Buy Now</a
+            >
+            <%}else{%>
+            <a href="/login" class="btns btn--white">Buy Now</a>
+            <%}%>
+          </div>
         </div>
       </div>
+      <!-- car ends here -->
+
+      <%})%>
     </div>
-    <footer class="the-footer">row4</footer>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <!-- belly ends here -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="../script/stripePayment.js"></script>
   </body>
