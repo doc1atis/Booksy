@@ -1,0 +1,55 @@
+body {
+  background-color: #41b3a3;
+  font-family: "Baloo Bhai", cursive;
+}
+.login-button {
+  background-color: #f4f7f6;
+  width: 6rem;
+  color: black;
+}
+.library-link-logo {
+  font-size: 3rem;
+  text-decoration: none;
+  margin-right: 2rem;
+  transform: translateY(10px);
+}
+.library-link-logo:hover {
+  text-decoration: none;
+}
+.device-shape-logo {
+  font-weight: 700;
+  text-decoration: none;
+}
+.obooksy-navbar {
+  /* background-color: #f4f7f6; */
+  background-image: linear-gradient(rgba(255, 99, 71, 0.454), tomato);
+}
+.ob-navbar-brand {
+  font-size: 5rem;
+}
+.ob-brand-logo {
+  color: papayawhip;
+}
+
+.obooksy-word {
+  color: whitesmoke;
+  font-size: 5rem;
+  text-transform: uppercase;
+  margin-right: 30%;
+}
+.app-body {
+  background-color: #41b3a3;
+}
+.register-form {
+  background-color: #f4f7f6;
+}
+.register-icon {
+  font-size: 3rem;
+}
+.ob-footer {
+  background-color: #939393;
+}
+.feet-header {
+  background-color: #e7717c;
+  color: papayawhip;
+}

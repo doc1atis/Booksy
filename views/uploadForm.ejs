@@ -1,89 +1,269 @@
-<%include ./partials/head%>
-<%include ./partials/navBar%>
+<!-- head partial starts here -->
+<!DOCTYPE html>
+<%console.log(oldInputsUpload)%>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- bootstrap link starts here -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- bootstrap link ends here -->
+    <!-- font awsome for logo starts here -->
+    <script
+      src="https://kit.fontawesome.com/bfa195b1fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- font awsome for logo ends here -->
+    <!-- google font starts here -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google font ends here -->
+    <!-- internal logo font starts here -->
+    <link rel="stylesheet" href="../icons/icon-font.css" />
+    <!-- internal logo font ends here -->
 
-<div id="appBody" class="container">
-    <%if(successMessage.length){%>
-    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+    <!-- custom css to style the navbar starts here -->
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <!-- custom css to style the navbar ends here -->
+
+    <title>Obooksy</title>
+  </head>
+
+  <body>
+    <!-- head partial ends here -->
+    <!-- navbar partial satrts here -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light obooksy-navbar">
+      <a class="navbar-brand ob-navbar-brand" href="/">
+        <i class="fab fa-blogger-b ob-brand-logo"></i>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <!-- enmpty -->
+        </ul>
+        <h1 class="obooksy-word nav-item">obooksy</h1>
+        <a class="library-link-logo" href="/allbooks">
+          <i class="icon-ic-devices-tablet device-shape-logo"></i>
+        </a>
+
+        <%if(user){%>
+        <a href="/logout" class="login-button btn btn-dark rounded-pill"
+          >logout</a
+        >
+        <%}else{%>
+
+        <a href="/login" class="login-button btn btn-dark rounded-pill"
+          >login</a
+        >
+        <%}%>
+      </div>
+    </nav>
+    <!-- navbar partial ends here -->
+
+    <div id="appBody" class="container">
+      <%if(successMessage.length){%>
+      <div
+        class="alert alert-success alert-dismissible fade show mt-1"
+        role="alert"
+      >
         <strong>Great!</strong> <%=successMessage%>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
         </button>
-    </div>
-    <%}else if(errorMessage.length){%>
-    <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+      </div>
+      <%}else if(errorMessage.length){%>
+      <div
+        class="alert alert-danger alert-dismissible fade show mt-5"
+        role="alert"
+      >
         <strong>Sorry!</strong> <%=errorMessage%>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
         </button>
-    </div>
-    <% }%>
-    <form method="POST" action="/upload" enctype="multipart/form-data">
+      </div>
+      <% }%>
+      <form
+        method="POST"
+        action="/upload"
+        enctype="multipart/form-data"
+        class="register-form col-md-8 ml-auto mr-auto pt-5 pb-3 rounded pl-5 pr-5 mt-5 mb-5"
+      >
         <div class="row mt-3">
-            <div class="col">
-                <input name="title" type="text" class="form-control" placeholder="Title">
-            </div>
-            <div class="col">
-                <input name="authors" type="text" class="form-control" placeholder="Authors separated by comma">
-            </div>
-            <div class="col">
-                <input name="price" type="text" class="form-control" placeholder="Price">
-            </div>
+          <div class="col">
+            <%if(oldInputsUpload.length){%>
+            <input
+              name="title"
+              type="text"
+              class="form-control"
+              placeholder="Title"
+              value="<%=oldInputsUpload[0].title%>"
+            />
+            <%}else{%>
+            <input
+              name="title"
+              type="text"
+              class="form-control"
+              placeholder="Title"
+            />
+            <%}%>
+          </div>
+          <div class="col">
+            <%if(oldInputsUpload.length){%>
+            <input
+              name="authors"
+              type="text"
+              class="form-control"
+              placeholder="Authors"
+              value="<%=...oldInputsUpload[0].authors%>"
+            />
+            <%}else{%>
+            <input
+              name="authors"
+              type="text"
+              class="form-control"
+              placeholder="Authors"
+            />
+            <%}%>
+          </div>
+          <div class="col">
+            <%if(oldInputsUpload.length){%>
+            <input
+              name="price"
+              type="text"
+              class="form-control"
+              placeholder="Price"
+              value="<%=oldInputsUpload[0].price%>"
+            />
+            <%}else{%>
+            <input
+              name="price"
+              type="text"
+              class="form-control"
+              placeholder="Price"
+            />
+            <%}%>
+          </div>
         </div>
         <div class="input-group mt-5">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile04"
-                    aria-describedby="inputGroupFileAddon04" name="bookCover">
-                <label id="mLab" class="custom-file-label" for="inputGroupFile04">
-                    Cover Image
-                </label>
-            </div>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="inputGroupFile04"
+              aria-describedby="inputGroupFileAddon04"
+              name="bookCover"
+            />
+            <label id="mLab" class="custom-file-label" for="inputGroupFile04">
+              Cover Image
+            </label>
+          </div>
         </div>
         <div class="input-group mt-5">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile06"
-                    aria-describedby="inputGroupFileAddon06" name="content">
-                <label id="mLab3" class="custom-file-label" for="inputGroupFile06">
-                    Book content
-                </label>
-            </div>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="inputGroupFile06"
+              aria-describedby="inputGroupFileAddon06"
+              name="content"
+            />
+            <label id="mLab3" class="custom-file-label" for="inputGroupFile06">
+              Book content
+            </label>
+          </div>
         </div>
         <div class="input-group mb-3 mt-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Category</label>
-            </div>
-            <select name="category" class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="scify">scify</option>
-                <option value="romance">romance</option>
-                <option value="comedy">comedy</option>
-            </select>
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Category</label
+            >
+          </div>
+          <select name="category" class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="scify">scify</option>
+            <option value="romance">romance</option>
+            <option value="comedy">comedy</option>
+          </select>
         </div>
         <div class="input-group mt-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Book Summary</span>
-            </div>
-            <textarea name="bookSummary" class="form-control" aria-label="With textarea"></textarea>
+          <div class="input-group-prepend">
+            <span class="input-group-text">Book Summary</span>
+          </div>
+          <%if(oldInputsUpload.length){%>
+          <textarea
+            id="book-sum"
+            name="bookSummary"
+            value="<%=oldInputsUpload[0].bookSummary%>"
+            class="form-control"
+            aria-label="With textarea"
+            placeholder="enter book summarry"
+            required
+            maxlength="50"
+          ></textarea>
+          <%}else{%>
+          <textarea
+            id="book-sum"
+            name="bookSummary"
+            class="form-control"
+            aria-label="With textarea"
+            maxlength="50"
+          ></textarea>
+          <%}%>
         </div>
+
+        <p><span id="max-char">0</span> of/50</p>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-dark mt-5" type="submit">Upload</button>
-
+          <button class="btn btn-dark mt-5" type="submit">Upload</button>
         </div>
-    </form>
-</div>
+      </form>
+    </div>
 
-<script>
-    function changeInputContent(theInputId, theLabelId) {
-        const theInput = document.querySelector(`#${theInputId}`)
-        theInput.onchange = function (ev) {
-            const fileName = theInput.value.split("\\").pop()
-            document.querySelector(`#${theLabelId}`).innerText = fileName
-        }
-    }
+    <script>
+      document.getElementById("book-sum").oninput = function(ev) {
+        document.getElementById("max-char").textContent =
+          ev.target.value.length;
+      };
+      function changeInputContent(theInputId, theLabelId) {
+        const theInput = document.querySelector(`#${theInputId}`);
+        theInput.onchange = function(ev) {
+          const fileName = theInput.value.split("\\").pop();
+          document.querySelector(`#${theLabelId}`).innerText = fileName;
+        };
+      }
 
-    changeInputContent("inputGroupFile04", "mLab")
-    changeInputContent("inputGroupFile06", "mLab3")
+      changeInputContent("inputGroupFile04", "mLab");
+      changeInputContent("inputGroupFile06", "mLab3");
+    </script>
 
-
-</script>
-
-<%include ./partials/feet%>
+    <%include ./partials/feet%>
+  </body>
+</html>

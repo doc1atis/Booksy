@@ -10,6 +10,7 @@ router.get("/", auth.isLoggedIn, (req, res) => {
 });
 
 router.post("/", auth.isLoggedIn, async (req, res) => {
+  req.flash("oldInputsUpload", req.body);
   req.body.authors = req.body.authors.split(",");
   const { error } = validateBook(req.body);
   const { bookCover, content } = req.files;

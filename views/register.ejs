@@ -1,24 +1,242 @@
-<%include ./partials/head%>
-<%include ./partials/navBar%>
-<div id="appBody" class="container">
-    <div class="row justify-content-center">
-        <form method="POST" action="/register" class="mt-5 col-lg-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter Username" name="username" />
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                    name="password" />
-            </div>
-            <div class="row justify-content-center">
-                <button type="submit" class="btn btn-primary">
-                    SignUp
-                </button>
-            </div>
-        </form>
+<!-- head partial starts here -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- bootstrap link starts here -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- bootstrap link ends here -->
+    <!-- font awsome for logo starts here -->
+    <script
+      src="https://kit.fontawesome.com/bfa195b1fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- font awsome for logo ends here -->
+    <!-- google font starts here -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google font ends here -->
+    <!-- internal logo font starts here -->
+    <link rel="stylesheet" href="../icons/icon-font.css" />
+    <!-- internal logo font ends here -->
+
+    <!-- custom css to style the navbar starts here -->
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <!-- custom css to style the navbar ends here -->
+
+    <title>Obooksy</title>
+  </head>
+  <body>
+    <!-- head partial ends here -->
+    <!-- navbar partial satrts here -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light obooksy-navbar">
+      <a class="navbar-brand ob-navbar-brand" href="/">
+        <i class="fab fa-blogger-b ob-brand-logo"></i>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <!-- enmpty -->
+        </ul>
+        <h1 class="obooksy-word nav-item">obooksy</h1>
+        <a class="library-link-logo" href="/allbooks">
+          <i class="icon-ic-devices-tablet device-shape-logo"></i>
+        </a>
+
+        <%if(user){%>
+        <a href="/logout" class="login-button btn btn-dark rounded-pill"
+          >logout</a
+        >
+        <%}else{%>
+
+        <a href="/login" class="login-button btn btn-dark rounded-pill"
+          >login</a
+        >
+        <%}%>
+      </div>
+    </nav>
+    <!-- navbar partial ends here -->
+    <!-- appBody starts -->
+    <div class="container-fluid pt-5 pb-3 app-body">
+      <form
+        method="POST"
+        action="/register"
+        class="register-form col-sm-9 col-md-5 col-lg-4 col-xl-3 ml-auto mr-auto pt-5 pb-3 rounded pl-5 pr-5"
+      >
+        <%if(errorMess){%>
+        <!-- alert satrts here -->
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong><%=errorMess%></strong>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- alert ends here -->
+        <%}%>
+        <div class="d-flex justify-content-center">
+          <span class="register-icon">
+            <i class="icon-ic-actions-closed-user"></i>
+          </span>
+        </div>
+        <% if(errorType === "usernameError"){%>
+        <!-- form inputs starts here -->
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter username"
+            name="username"
+            value="<%=oldInputs.username%>"
+            style="border: 1px solid red;"
+          />
+        </div>
+        <!-- form inputs ends here -->
+        <!-- form inputs starts here -->
+        <div class="form-group mt-5">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            aria-describedby="emailHelp"
+            placeholder="Enter password"
+            name="password"
+            value="<%=oldInputs.password%>"
+          />
+        </div>
+        <!-- form inputs ends here -->
+        <%}else if(errorType === "passwordError"){%>
+        <!-- form inputs starts here -->
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter username"
+            name="username"
+            value="<%=oldInputs.username%>"
+          />
+        </div>
+        <!-- form inputs ends here -->
+        <!-- form inputs starts here -->
+        <div class="form-group mt-5">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            aria-describedby="emailHelp"
+            placeholder="Enter password"
+            name="password"
+            value="<%=oldInputs.password%>"
+            style="border: 1px solid red;"
+          />
+        </div>
+        <!-- form inputs ends here -->
+
+        <%}else{%>
+        <!-- form inputs starts here -->
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter username"
+            name="username"
+          />
+        </div>
+        <!-- form inputs ends here -->
+        <!-- form inputs starts here -->
+        <div class="form-group mt-5">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            aria-describedby="emailHelp"
+            placeholder="Enter password"
+            name="password"
+          />
+        </div>
+        <!-- form inputs ends here -->
+        <%}%>
+
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-dark rounded-pill">
+            SignUp
+          </button>
+        </div>
+      </form>
     </div>
-</div>
-<%include ./partials/feet%>
+    <!-- appBody ends -->
+
+    <!-- feet starts here -->
+    <!-- footer quote starts here -->
+    <div class="card rounded-0 fixed-bottom ob-footer">
+      <div class="card-header feet-header">
+        Quote
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat a ante.
+          </p>
+          <footer class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <!-- footer quote ends here -->
+    <!-- external scripts starts here -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- external scripts ends here -->
+    <!-- internal scripts starts here -->
+    <!-- internal scripts ends here -->
+  </body>
+</html>
+<!-- feet ends here -->

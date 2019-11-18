@@ -7,7 +7,11 @@ function isLoggedOut(req, res, next) {
 }
 router.get("/", isLoggedOut, (req, res) => {
   // show register form
-  res.render("register");
+  res.render("register", {
+    errorMess: null,
+    errorType: null,
+    oldInputs: null
+  });
 });
 
 router.post("/", isLoggedOut, (req, res) => {

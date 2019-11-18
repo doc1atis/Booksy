@@ -30,7 +30,9 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     res.locals.user = req.user;
     res.locals.errorMessage = req.flash("errorMessage");
+    res.locals.errorMessy = req.flash("error");
     res.locals.successMessage = req.flash("successMessage");
+    res.locals.oldInputsUpload = req.flash("oldInputsUpload");
     next();
   });
 };
