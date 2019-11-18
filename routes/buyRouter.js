@@ -50,6 +50,7 @@ router.post(
 
     if (event.type === "charge.succeeded") {
       const charge = event.data.object;
+
       // safely ship products here,query database
       // find user by id and update his purchases property
       olgyPass.code = process.env.END_POINT_SECRET;

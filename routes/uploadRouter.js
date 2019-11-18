@@ -1,14 +1,47 @@
 const express = require("express");
+const aws = require("aws-sdk");
 const validateBook = require("../controllers/validation/validateBook");
 const fs = require("fs");
 const { Book } = require("../models/BookModel");
 const auth = require("../controllers/authentication");
 
 const router = express.Router();
+aws.config.region = "us-east-2";
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
+
 router.get("/", auth.isLoggedIn, (req, res) => {
   res.render("uploadForm");
 });
-
+// new post route to upload to aws
+router.post("/aws", (req, res) => {
+  const s3 = new aws.S3();
+  const { bookCover, content } = req.files;
+  const files = [bookCover[0], content[0]];
+  for (let i = 0; i < files.length; i++) {
+    const fileName = files[i].filename;
+    const fileType = files[i].mimetype;
+    const s3Params = {
+      Bucket: S3_BUCKET_NAME,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: "public-read"
+    };
+    s3.getSignedUrl("putObject", s3Params, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.send("olgy there was an error uploading");
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.send("file was upload to aws olgy");
+    });
+  }
+});
+// post ends
 router.post("/", auth.isLoggedIn, async (req, res) => {
   req.flash("oldInputsUpload", req.body);
   req.body.authors = req.body.authors.split(",");

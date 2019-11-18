@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const startUp = require("./controllers/startup");
 const portDebugger = require("debug")("app:portConnection");
 const app = express();
