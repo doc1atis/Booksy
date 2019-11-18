@@ -7,7 +7,7 @@ router.get("/", auth.isLoggedIn, async (req, res) => {
   if (olgyPass.code === process.env.END_POINT_SECRET) {
     req.user.purchases.push(olgyPass.book);
     await req.user.save();
-    return res.render("library", {
+    return res.status(200).render("library", {
       purchasedBooks: req.user.purchases,
       chargeMessage: "payment successful"
     });

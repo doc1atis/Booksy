@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%console.log(purchasedBooks)%>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -51,6 +52,51 @@
       <!-- right side ends here -->
     </div>
     <!-- belly -->
-    <div class="belly"></div>
+    <div class="belly">
+      <!-- foreach starts here -->
+      <%purchasedBooks.forEach(book => {%>
+      <!-- card start here -->
+      <div class="card">
+        <div class="card__side card__side--front">
+          <!-- ADD PICTURE ON THE CARD IN CSS using set attribute bacKground -->
+          <div
+            class="card__picture"
+            style="background-image: url('../<%=book.cover%>');"
+          >
+            &nbsp;
+          </div>
+          <h5 class="card__heading">
+            <!-- book title -->
+            <span class="card__heading-span">drew the best</span>
+          </h5>
+          <div class="card__details">
+            <ul>
+              <li class="item">summarry</li>
+              <li class="item">reviews</li>
+              <li class="item">author</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card__side card__side--back">
+          <div class="card__cta">
+            <div class="card__price-box">
+              <p class="card__price-only">price</p>
+              <p class="card__price-value">
+                <i class="fas fa-comment-dollar"></i><%=book.price%>
+              </p>
+            </div>
+
+            <a href="<%=book._id%>" class="btns buyButtonLink btn--white"
+              >review</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- car ends here -->
+
+      <%})%>
+      <!--foreach ends here-->
+    </div>
+    <!-- belly ends here -->
   </body>
 </html>
