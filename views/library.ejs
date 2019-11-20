@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%console.log(purchasedBooks)%>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -89,9 +88,10 @@
                 <i class="fas fa-comment-dollar"></i><%=book.price%>
               </p>
             </div>
-
-            <a href="<%=book._id%>" class="btns buyButtonLink btn--white"
-              >review</a
+            <a
+              href="/download/?bookId=<%=book._id%>&bookContent=<%=book.content%>"
+              class="btns buyButtonLink btn--white"
+              >Download</a
             >
           </div>
         </div>
