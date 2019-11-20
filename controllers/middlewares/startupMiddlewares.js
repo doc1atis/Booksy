@@ -1,6 +1,4 @@
 const morgan = require("morgan");
-const { storage, fileFilter } = require("../uploadFiles");
-const multer = require("multer");
 const auth = require("../authentication");
 const express = require("express");
 
@@ -17,16 +15,6 @@ module.exports = function(app) {
   // make req.body available as an plain object
   //app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-
-  app.use(
-    multer({
-      storage,
-      fileFilter
-    }).fields([
-      { name: "bookCover", maxCount: 1 },
-      { name: "content", maxCount: 1 }
-    ])
-  );
   app.use(function(req, res, next) {
     res.locals.user = req.user;
     res.locals.errorMessage = req.flash("errorMessage");

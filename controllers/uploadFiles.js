@@ -1,32 +1,42 @@
-const multer = require("multer");
+// for s3 starts
 const uuid = require("uuid/v4");
-exports.storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "MyUploads");
-  },
-  filename: (req, file, callback) => {
-    callback(null, uuid() + "pik-" + file.originalname);
-  }
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
+// for s3 ends
+
+AWS.config.region = "us-east-1";
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_Access_Key_ID,
+  secretAccessKey: process.env.AWS_Secret_Access_Key
 });
 
-exports.fileFilter = (req, file, callback) => {
-  // avoid looping over 1000 of files
-  const isImage =
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg";
-  const isPdf = file.mimetype === "application/pdf";
-  if (isImage || isPdf) {
-    if (file.fieldname === "bookCover" && isImage) {
-      req.coverIsGiven = true;
-      return callback(null, true);
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.AWS_BUCKET_NAME,
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    metadata: function(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function(req, file, cb) {
+      cb(null, `${uuid()}-UPOLGY-${file.originalname}`);
     }
-    if (file.fieldname === "content" && isPdf) {
-      req.contentIsGiven = true;
-      return callback(null, true);
+  }),
+
+  fileFilter: function(req, file, cb) {
+    if (file.fieldname === "bookCover" && file.mimetype === "image/jpeg") {
+      return cb(null, true);
     }
-    return callback(null, false);
-  } else {
-    callback(null, false);
+    if (file.fieldname === "content" && file.mimetype === "application/pdf") {
+      return cb(null, true);
+    }
+    return cb(null, false);
   }
-};
+});
+const multiUpload = upload.fields([
+  { name: "bookCover", maxCount: 1 },
+  { name: "content", maxCount: 1 }
+]);
+module.exports = multiUpload;
